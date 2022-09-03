@@ -1,10 +1,10 @@
-<%= form_with(model: content, local: true) do |form| %>
-  <% if content.errors.any? %>
+<%= form_with(model: users_video, local: true) do |form| %>
+  <% if users_video.errors.any? %>
     <div id="error_explanation">
-      <h2><%= pluralize(content.errors.count, "error") %> prohibited this content from being saved:</h2>
+      <h2><%= pluralize(users_video.errors.count, "error") %> prohibited this users_video from being saved:</h2>
 
       <ul>
-      <% content.errors.full_messages.each do |message| %>
+      <% users_video.errors.full_messages.each do |message| %>
         <li><%= message %></li>
       <% end %>
       </ul>
