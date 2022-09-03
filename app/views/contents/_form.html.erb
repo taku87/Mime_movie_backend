@@ -16,6 +16,11 @@
     <%= form.text_field :title %>
   </div>
 
+  <div class="field">
+    <%= form.label :video_url %><br>
+    <%= form.file_field :video_url, :accept => 'video/*' %>
+  </div>
+
   <div class="actions">
     <%= form.submit %>
   </div>

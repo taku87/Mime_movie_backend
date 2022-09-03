@@ -3,7 +3,11 @@
 <p>
   <strong>Title:</strong>
   <%= @content.title %>
+  <% if @content.video_url.present? %>
+    <%= video_tag(@content.video_url.to_s, :controls => true) %>
+  <% end %>
+
 </p>
 
-<%= link_to 'Edit', edit_content_path(@content) %> |
+<%= link_to 'Edit', edit_content_path(@content) %>
 <%= link_to 'Back', contents_path %>
