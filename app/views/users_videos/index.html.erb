@@ -13,7 +13,6 @@
   <tbody>
     <% @users_videos.each do |users_video| %>
       <tr>
-        <td><%= users_video.title %></td>
         <td><%= link_to 'Show', users_video %></td>
         <td><%= link_to 'Edit', edit_users_video_path(users_video) %></td>
         <td><%= link_to 'Destroy', users_video, method: :delete, data: { confirm: 'Are you sure?' } %></td>

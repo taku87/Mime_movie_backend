@@ -2,9 +2,8 @@
 
 <p>
   <strong>Title:</strong>
-  <%= @users_video.title %>
   <% if @users_video.video_url.present? %>
-    <%= video_tag(@users_video.video_url.to_s, :controls => true) %>
+    <%= video_tag(@users_video.transcoded_video_url.to_s, :controls => true) %>
   <% end %>
 
 </p>

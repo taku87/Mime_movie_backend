@@ -22,7 +22,11 @@ class UsersVideosController < ApplicationController
   # POST /users_videos or /users_videos.json
   def create
     @users_video = UsersVideo.new(users_video_params)
-
+    #テスト用に手作業でカラム情報を追加。本来は、入力時にパラメータに情報入るように実装予定
+    @users_video.content_number = 1
+    @users_video.user_id = 1
+    @users_video.transcoded_video_url = VideoEditingWorker.user_video_to_mp4(@users_video)
+    
     respond_to do |format|
       if @users_video.save
         format.html { redirect_to users_video_url(@users_video), notice: "UsersVideo was successfully created." }
@@ -58,13 +62,13 @@ class UsersVideosController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_users_video
-      @users_video = UsersVideo.find(params[:id])
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_users_video
+    @users_video = UsersVideo.find(params[:id])
+  end
 
-    # Only allow a list of trusted parameters through.
-    def users_video_params
-      params.require(:users_video).permit(:title, :video_url)
-    end
+  # Only allow a list of trusted parameters through.
+  def users_video_params
+    params.require(:users_video).permit(:number, :video_url)
+  end
 end

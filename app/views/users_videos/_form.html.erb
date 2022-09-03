@@ -12,11 +12,9 @@
   <% end %>
 
   <div class="field">
-    <%= form.label :title %>
-    <%= form.text_field :title %>
-  </div>
+    <%= form.label :number %><br>
+    <%= form.number_field :number %>
 
-  <div class="field">
     <%= form.label :video_url %><br>
     <%= form.file_field :video_url, :accept => 'video/*' %>
   </div>
