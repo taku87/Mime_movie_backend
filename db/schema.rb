@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_09_02_053227) do
+ActiveRecord::Schema.define(version: 2022_09_03_210644) do
 
   create_table "contents", force: :cascade do |t|
     t.integer "number"
@@ -42,6 +42,7 @@ ActiveRecord::Schema.define(version: 2022_09_02_053227) do
     t.integer "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "transcoded_video_url"
     t.index ["user_id"], name: "index_users_videos_on_user_id"
   end
 
