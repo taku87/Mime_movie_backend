@@ -36,6 +36,16 @@ gem 'jbuilder', '~> 2.5'
 # Reduces boot times through caching; required in config/boot.rb
 gem 'bootsnap', '>= 1.1.0', require: false
 
+# 動画アップロード
+gem 'carrierwave'
+# 動画加工　
+gem 'streamio-ffmpeg'
+#　AWS 3S操作用ツールとして　（動画をA3Sにアップロードするため）
+gem 'aws-sdk-rails'
+gem 'aws-sdk', '~> 3'
+# 環境変数の管理
+gem 'dotenv-rails'
+
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]

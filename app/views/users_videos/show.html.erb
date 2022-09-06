@@ -1,0 +1,12 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Title:</strong>
+  <% if @users_video.video_url.present? %>
+    <%= video_tag(@users_video.transcoded_video_url.to_s, :controls => true) %>
+  <% end %>
+
+</p>
+
+<%= link_to 'Edit', edit_users_video_path(@users_video) %>
+<%= link_to 'Back', users_videos_path %>
