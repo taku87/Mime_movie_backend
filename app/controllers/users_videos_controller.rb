@@ -23,12 +23,13 @@ class UsersVideosController < ApplicationController
   def create
     @users_video = UsersVideo.new(users_video_params)
     #テスト用に手作業でカラム情報を追加。本来は、入力時にパラメータに情報入るように実装予定
-    @users_video.content_number = 1
+    @users_video.content_number = 100
     @users_video.user_id = 1
     @users_video.transcoded_video_url = VideoEditingWorker.user_video_to_mp4(@users_video)
     
     respond_to do |format|
       if @users_video.save
+        upload
         format.html { redirect_to users_video_url(@users_video), notice: "UsersVideo was successfully created." }
         format.json { render :show, status: :created, location: @users_video }
       else
@@ -70,5 +71,17 @@ class UsersVideosController < ApplicationController
   # Only allow a list of trusted parameters through.
   def users_video_params
     params.require(:users_video).permit(:number, :video_url)
+  end
+
+  def upload    
+    region = 'ap-northeast-1'
+    # バケット名
+    bucket = 'user-videos-s3-01'
+    # バケットに保存するファイル名
+    key = "#{@users_video.content_number}_content_user_movie_#{@users_video.number}.mp4"
+    client = Aws::S3::Client.new(region: region, access_key_id: ENV['AWS_ACCESS_KEY_ID'], secret_access_key: ENV['AWS_SECRET_ACCESS_KEY'] )  
+    # バケットに保存する動画の場所
+    file_path = @users_video.transcoded_video_url
+    client.put_object(bucket: bucket, key: key, body: file_path) 
   end
 end
