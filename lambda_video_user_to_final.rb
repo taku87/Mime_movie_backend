@@ -12,15 +12,13 @@ def lambda_handler(event:, context:)
 
   basename_final = "final_" + File.basename(@key)
   signer = Aws::S3::Presigner.new
-  user_video_url = signer.presigned_url(:get_object, bucket: bucket, key: @key)
-  content_video_url = get_content_video
-  puts user_video_url
-  puts content_video_url 
+  @user_video_url = signer.presigned_url(:get_object, bucket: bucket, key: @key)
+  @content_video_url = get_content_video
 
   # 後述する AWS Lambda Layer を使用して、FFmpegを Lambda 環境にインストールしているので、
   # 'opt/'以下に格納されたffmpegの実行ファイルを使用する
   # ffmpeg -i アップロードされたユーザー動画 -i コンテンツ動画 -filter_complex "video連結aduioなし" -an final_ユーザー動画（として出力）
-  ffmpeg_cmd = "/opt/bin/ffmpeg -i #{user_video_url}  -i #{content_video_url} -filter_complex "concat=n=2 : v=1 : a=0" -an #{basename_final}.mp4"
+  ffmpeg_cmd = "/opt/bin/ffmpeg -nostdin -i \"#{@user_video_url}\" -i \"#{@content_video_url}\" -filter_complex 'concat=n=2:v=1:a=0' -an #{basename_final}.mp4 -nostats </dev/null >/dev/null 2>&1 &"
   log_output, error, status = Open3.capture3(ffmpeg_cmd)
 
   logger.info("edit video is completed")
@@ -56,8 +54,8 @@ def get_content_video
   content_number = user_video.slice(0,3)
   key = "#{content_number}_content.mp4"
   signer = Aws::S3::Presigner.new
-  @content_video_url = signer.presigned_url(:get_object, bucket: bucket, key: key)
-  @content_video_url
+  @content_video_url_get = signer.presigned_url(:get_object, bucket: bucket, key: key)
+  @content_video_url_get
 end
 
 def logger
