@@ -25,7 +25,9 @@ class UsersVideosController < ApplicationController
     #テスト用に手作業でカラム情報を追加。本来は、入力時にパラメータに情報入るように実装予定
     @users_video.content_number = 100
     @users_video.user_id = 1
+
     #@users_video.transcoded_video_url = VideoEditingWorker.user_video_to_mp4(@users_video)
+
     
     respond_to do |format|
       if @users_video.save
@@ -81,8 +83,10 @@ class UsersVideosController < ApplicationController
     key = "#{@users_video.content_number}_content_user_movie_#{@users_video.number}.mp4"
     client = Aws::S3::Client.new(region: region, access_key_id: ENV['AWS_ACCESS_KEY_ID'], secret_access_key: ENV['AWS_SECRET_ACCESS_KEY'] )  
     # バケットに保存する動画の場所
+
     file_path ="/uploads/users_video/video_url/#{@users_video.video_url.file.file}"
     #file_path = @users_video.transcoded_video_url
+
     client.put_object(bucket: bucket, key: key, body: file_path) 
   end
 end
