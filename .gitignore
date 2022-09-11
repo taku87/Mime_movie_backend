@@ -32,3 +32,5 @@
 # Ignore master key for decrypting credentials and more.
 /config/master.key
 .env
+lambda_FFmpeg_user_video_and_content_video.py
+lambda_FFmpeg_user_video_and_content_videol.rb
