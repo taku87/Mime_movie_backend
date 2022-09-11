@@ -170,11 +170,11 @@ https://drive.google.com/file/d/1mzTLzn1F49SFcauD-0nVoSQoAi0TYeQK/view?usp=shari
 
 ユーザーが、選択したコンテンツの指示に沿って撮影・投稿した動画を管理します。
 
- FFmpegを使用して、「mp4に変換」を行い、AWS 3Sにアップロードします。
+ FFmpegを使用して、「mp4に変換」を行い、AWS S3にアップロードします。
 
 - number: ユーザー動画に割り振る一意の番号
 
-３S、lambda関数と連携を取る際に、使い勝手のいい一意のデータが欲しくなる可能性が高いので、idとは別に用意しています。
+S3、lambda関数と連携を取る際に、使い勝手のいい一意のデータが欲しくなる可能性が高いので、idとは別に用意しています。
 
 - vide_url: 投稿動画の一時保管場所
 - transcoded_video_url: mp4変換後の投稿動画の一時保管場所
@@ -186,7 +186,7 @@ https://drive.google.com/file/d/1mzTLzn1F49SFcauD-0nVoSQoAi0TYeQK/view?usp=shari
 
 - number: コンテンツ動画に割り振る一意の番号
 
-３S、lambda関数と連携を取る際に、使い勝手のいい一意のデータが必要になるため、idとは別に用意しています。
+S3、lambda関数と連携を取る際に、使い勝手のいい一意のデータが必要になるため、idとは別に用意しています。
 
 - video_url:　コンテンツ動画の保管場所
 - title: コンテンツ動画のタイトル（キャッチコピーのイメージ）
@@ -209,7 +209,7 @@ https://drive.google.com/file/d/1mzTLzn1F49SFcauD-0nVoSQoAi0TYeQK/view?usp=shari
 
 - number: 完成動画に割り振る一意の番号
 
-３S、lambda関数と連携を取る際に、使い勝手のいい一意のデータが欲しくなる可能性が高いので、idとは別に用意しています。
+S3、lambda関数と連携を取る際に、使い勝手のいい一意のデータが欲しくなる可能性が高いので、idとは別に用意しています。
 
 - video_url:　完成動画の保管場所
 - user_title: ユーザー自身がつけれるタイトル
