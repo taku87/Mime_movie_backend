@@ -1,0 +1,79 @@
+{
+  "TimecodeConfig": {
+    "Source": "ZEROBASED"
+  },
+  "OutputGroups": [
+    {
+      "CustomName": "connect_video",
+      "Name": "File Group",
+      "Outputs": [
+        {
+          "ContainerSettings": {
+            "Container": "MP4",
+            "Mp4Settings": {}
+          },
+          "VideoDescription": {
+            "Width": 1920,
+            "Height": 1080,
+            "CodecSettings": {
+              "Codec": "H_264",
+              "H264Settings": {
+                "ParNumerator": 16,
+                "FramerateDenominator": 1,
+                "MaxBitrate": 8000000,
+                "ParDenominator": 9,
+                "FramerateControl": "SPECIFIED",
+                "RateControlMode": "QVBR",
+                "FramerateNumerator": 30,
+                "SceneChangeDetect": "TRANSITION_DETECTION"
+              }
+            }
+          },
+          "AudioDescriptions": [
+            {
+              "AudioSourceName": "Audio Selector 1",
+              "CodecSettings": {
+                "Codec": "AAC",
+                "AacSettings": {
+                  "Bitrate": 96000,
+                  "CodingMode": "CODING_MODE_2_0",
+                  "SampleRate": 48000
+                }
+              }
+            }
+          ],
+          "Extension": "mp4",
+          "NameModifier": "_completed"
+        }
+      ],
+      "OutputGroupSettings": {
+        "Type": "FILE_GROUP_SETTINGS",
+        "FileGroupSettings": {
+          "Destination": "s3://final-videos-s3-01/"
+        }
+      }
+    }
+  ],
+  "Inputs": [
+    {
+      "AudioSelectors": {
+        "Audio Selector 1": {
+          "DefaultSelection": "DEFAULT"
+        }
+      },
+      "VideoSelector": {},
+      "TimecodeSource": "ZEROBASED",
+      "FileInput": ""
+    },
+    {
+      "AudioSelectors": {
+        "Audio Selector 1": {
+          "DefaultSelection": "DEFAULT"
+        }
+      },
+      "VideoSelector": {},
+      "TimecodeSource": "ZEROBASED",
+      "FileInput": ""
+    }
+  ]
+}
