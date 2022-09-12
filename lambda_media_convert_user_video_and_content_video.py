@@ -3,7 +3,7 @@ import urllib.parse
 import boto3
 import os
 
-S3_DESTINATION_BUCKET = "final-videos-s3-01"
+S3_DESTINATION_BUCKET = "completed-videos-s3-01"
 mediaconvert =  boto3.client('mediaconvert', region_name='ap-northeast-1', endpoint_url='https://mpazqbhuc.mediaconvert.ap-northeast-1.amazonaws.com')
 
 def lambda_handler(event, context):
@@ -22,7 +22,7 @@ def lambda_handler(event, context):
     s3_user_key = urllib.parse.unquote_plus(event['Records'][0]['s3']['object']['key'], encoding='utf-8')
     inputFile_user = "s3://" + "user-videos-s3-01" + "/" + s3_source_key
     inputFile_content = "s3://" + "content-videos-s3-01" + "/" + s3_content_key  
-    #outputKey = "s3://final-videos-s3-01/" + s3_destination_filename
+    #outputKey = "s3://completed-videos-s3-01/" + s3_destination_filename
 
     #try:
     s3_client = boto3.client('s3')
