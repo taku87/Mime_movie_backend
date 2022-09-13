@@ -10,39 +10,118 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_09_03_210644) do
+ActiveRecord::Schema.define(version: 2022_09_13_051847) do
 
-  create_table "contents", force: :cascade do |t|
-    t.integer "number"
+  create_table "completed_video_comments", force: :cascade do |t|
+    t.integer "user_id"
+    t.integer "completed_video_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["completed_video_id"], name: "index_completed_video_comments_on_completed_video_id"
+    t.index ["user_id"], name: "index_completed_video_comments_on_user_id"
+  end
+
+  create_table "completed_video_loves", force: :cascade do |t|
+    t.integer "user_id"
+    t.integer "completed_video_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["completed_video_id"], name: "index_completed_video_loves_on_completed_video_id"
+    t.index ["user_id"], name: "index_completed_video_loves_on_user_id"
+  end
+
+  create_table "completed_videolikes", force: :cascade do |t|
+    t.integer "user_id"
+    t.integer "completed_video_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["completed_video_id"], name: "index_completed_videolikes_on_completed_video_id"
+    t.index ["user_id"], name: "index_completed_videolikes_on_user_id"
+  end
+
+  create_table "completed_videos", force: :cascade do |t|
+    t.integer "user_video_id"
+    t.integer "content_video_id"
+    t.string "number", null: false
+    t.string "video_url", null: false
+    t.string "user_title"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["content_video_id"], name: "index_completed_videos_on_content_video_id"
+    t.index ["user_video_id"], name: "index_completed_videos_on_user_video_id"
+  end
+
+  create_table "content_video_comments", force: :cascade do |t|
+    t.text "body"
+    t.integer "user_id"
+    t.integer "content_video_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["content_video_id"], name: "index_content_video_comments_on_content_video_id"
+    t.index ["user_id"], name: "index_content_video_comments_on_user_id"
+  end
+
+  create_table "content_video_likes", force: :cascade do |t|
+    t.integer "user_id"
+    t.integer "content_video_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["content_video_id"], name: "index_content_video_likes_on_content_video_id"
+    t.index ["user_id"], name: "index_content_video_likes_on_user_id"
+  end
+
+  create_table "content_video_loves", force: :cascade do |t|
+    t.integer "user_id"
+    t.integer "content_video_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["content_video_id"], name: "index_content_video_loves_on_content_video_id"
+    t.index ["user_id"], name: "index_content_video_loves_on_user_id"
+  end
+
+  create_table "content_video_tag_relations", force: :cascade do |t|
+    t.integer "content_video_type", default: 0, null: false
+    t.integer "tag_id"
+    t.integer "content_video_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["content_video_id"], name: "index_content_video_tag_relations_on_content_video_id"
+    t.index ["tag_id"], name: "index_content_video_tag_relations_on_tag_id"
+  end
+
+  create_table "content_videos", force: :cascade do |t|
+    t.integer "number", null: false
     t.string "title", null: false
     t.text "description"
-    t.string "category"
-    t.string "video_url"
-    t.integer "video_length"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.datetime "published_at"
-    t.datetime "deleted_at"
+  end
+
+  create_table "tags", force: :cascade do |t|
+    t.string "title", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "users", force: :cascade do |t|
     t.string "name", null: false
+    t.string "email", null: false
+    t.string "avatar"
     t.integer "role", default: 0
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.datetime "deleted_at"
-    t.index ["deleted_at"], name: "index_users_on_deleted_at"
-    t.index ["name"], name: "index_users_on_name"
   end
 
   create_table "users_videos", force: :cascade do |t|
-    t.string "number"
-    t.string "video_url"
-    t.integer "content_number"
     t.integer "user_id"
+    t.integer "content_video_id"
+    t.string "number", null: false
+    t.string "content_number", null: false
+    t.string "video_url", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.string "transcoded_video_url"
+    t.index ["content_video_id"], name: "index_users_videos_on_content_video_id"
     t.index ["user_id"], name: "index_users_videos_on_user_id"
   end
 
