@@ -7,6 +7,6 @@ class User < ApplicationRecord
   has_many :content_video_comments, dependent: :destroy
   has_many :content_video_likes, dependent: :destroy
   has_many :content_video_loves, dependent: :destroy
-  
+
   validates :name, :presence => true
 end

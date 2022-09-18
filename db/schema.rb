@@ -13,6 +13,7 @@
 ActiveRecord::Schema.define(version: 2022_09_13_051847) do
 
   create_table "completed_video_comments", force: :cascade do |t|
+    t.text "body", null: false
     t.integer "user_id"
     t.integer "completed_video_id"
     t.datetime "created_at", null: false
@@ -27,6 +28,7 @@ ActiveRecord::Schema.define(version: 2022_09_13_051847) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["completed_video_id"], name: "index_completed_video_likes_on_completed_video_id"
+    t.index ["user_id", "completed_video_id"], name: "index_completed_video_likes_on_user_id_and_completed_video_id", unique: true
     t.index ["user_id"], name: "index_completed_video_likes_on_user_id"
   end
 
@@ -36,6 +38,7 @@ ActiveRecord::Schema.define(version: 2022_09_13_051847) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["completed_video_id"], name: "index_completed_video_loves_on_completed_video_id"
+    t.index ["user_id", "completed_video_id"], name: "index_completed_video_loves_on_user_id_and_completed_video_id", unique: true
     t.index ["user_id"], name: "index_completed_video_loves_on_user_id"
   end
 
@@ -52,7 +55,7 @@ ActiveRecord::Schema.define(version: 2022_09_13_051847) do
   end
 
   create_table "content_video_comments", force: :cascade do |t|
-    t.text "body"
+    t.text "body", null: false
     t.integer "user_id"
     t.integer "content_video_id"
     t.datetime "created_at", null: false
@@ -62,11 +65,12 @@ ActiveRecord::Schema.define(version: 2022_09_13_051847) do
   end
 
   create_table "content_video_likes", force: :cascade do |t|
-    t.integer "user_id"
-    t.integer "content_video_id"
+    t.integer "user_id", null: false
+    t.integer "content_video_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["content_video_id"], name: "index_content_video_likes_on_content_video_id"
+    t.index ["user_id", "content_video_id"], name: "index_content_video_likes_on_user_id_and_content_video_id", unique: true
     t.index ["user_id"], name: "index_content_video_likes_on_user_id"
   end
 
@@ -76,13 +80,13 @@ ActiveRecord::Schema.define(version: 2022_09_13_051847) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["content_video_id"], name: "index_content_video_loves_on_content_video_id"
+    t.index ["user_id", "content_video_id"], name: "index_content_video_loves_on_user_id_and_content_video_id", unique: true
     t.index ["user_id"], name: "index_content_video_loves_on_user_id"
   end
 
   create_table "content_video_tag_relations", force: :cascade do |t|
-    t.integer "content_video_type", default: 0, null: false
-    t.integer "tag_id"
-    t.integer "content_video_id"
+    t.integer "tag_id", null: false
+    t.integer "content_video_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["content_video_id"], name: "index_content_video_tag_relations_on_content_video_id"
@@ -99,9 +103,10 @@ ActiveRecord::Schema.define(version: 2022_09_13_051847) do
   end
 
   create_table "tags", force: :cascade do |t|
-    t.string "title", null: false
+    t.string "name", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["name"], name: "index_tags_on_name", unique: true
   end
 
   create_table "user_videos", force: :cascade do |t|

@@ -6,5 +6,7 @@ class CreateCompletedVideoLoves < ActiveRecord::Migration[5.2]
 
       t.timestamps
     end
+
+    add_index :completed_video_loves, [:user_id, :completed_video_id], unique: true
   end
 end
