@@ -1,4 +1,4 @@
-class UserVideo < ApplicationRecord
+class UsersVideo < ApplicationRecord
   mount_uploader :video_url, VideoUploader
   belongs_to :user
   belongs_to :content_video

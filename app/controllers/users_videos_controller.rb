@@ -74,7 +74,7 @@ class UsersVideosController < ApplicationController
     params.require(:users_video).permit(:number, :video_url)
   end
 
-  def upload    
+  def upload
     region = 'ap-northeast-1'
     # バケット名
     bucket = 'user-videos-s3-01'
@@ -83,6 +83,6 @@ class UsersVideosController < ApplicationController
     client = Aws::S3::Client.new(region: region, access_key_id: ENV['AWS_ACCESS_KEY_ID'], secret_access_key: ENV['AWS_SECRET_ACCESS_KEY'] )  
     # バケットにアップロードする動画の場所
     file_path = @users_video.video_url
-    client.put_object(bucket: bucket, key: key, body: file_path) 
+    client.put_object(bucket: bucket, key: key, body: file_path)
   end
 end
