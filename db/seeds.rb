@@ -14,9 +14,9 @@ ContentVideo.create(number: "100", title: "コンテンツ動画１")
 ContentVideo.create(number: "200", title: "コンテンツ動画２")
 ContentVideo.create(number: "300", title: "コンテンツ動画３")
 
-Tag.create(title: "テストタグ１")
-Tag.create(title: "テストタグ２")
-Tag.create(title: "テストタグ３")
+Tag.create(name: "テストタグ１")
+Tag.create(name: "テストタグ２")
+Tag.create(name: "テストタグ３")
 
 #UserVideo.create(user_id: 1, content_video_id: 1, number: "1", content_number: "100", video_url: "uploads/user_video/video_url/1")
 #UserVideo.create(user_id: 1, content_video_id: 2, number: "2", content_number: "200", video_url: "uploads/user_video/video_url/2")
