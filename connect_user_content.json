@@ -49,7 +49,7 @@
       "OutputGroupSettings": {
         "Type": "FILE_GROUP_SETTINGS",
         "FileGroupSettings": {
-          "Destination": "s3://final-videos-s3-01/"
+          "Destination": "s3://completed-videos-s3-01/"
         }
       }
     }
