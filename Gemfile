@@ -45,6 +45,8 @@ gem 'aws-sdk-rails'
 gem 'aws-sdk', '~> 3'
 # 環境変数の管理
 gem 'dotenv-rails'
+# Reactからのアクセスを許可するために、CORS設定を行うためのもの
+gem 'rack-cors'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
