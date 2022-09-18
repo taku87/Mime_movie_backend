@@ -21,6 +21,15 @@ ActiveRecord::Schema.define(version: 2022_09_13_051847) do
     t.index ["user_id"], name: "index_completed_video_comments_on_user_id"
   end
 
+  create_table "completed_video_likes", force: :cascade do |t|
+    t.integer "user_id"
+    t.integer "completed_video_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["completed_video_id"], name: "index_completed_video_likes_on_completed_video_id"
+    t.index ["user_id"], name: "index_completed_video_likes_on_user_id"
+  end
+
   create_table "completed_video_loves", force: :cascade do |t|
     t.integer "user_id"
     t.integer "completed_video_id"
@@ -28,15 +37,6 @@ ActiveRecord::Schema.define(version: 2022_09_13_051847) do
     t.datetime "updated_at", null: false
     t.index ["completed_video_id"], name: "index_completed_video_loves_on_completed_video_id"
     t.index ["user_id"], name: "index_completed_video_loves_on_user_id"
-  end
-
-  create_table "completed_videolikes", force: :cascade do |t|
-    t.integer "user_id"
-    t.integer "completed_video_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["completed_video_id"], name: "index_completed_videolikes_on_completed_video_id"
-    t.index ["user_id"], name: "index_completed_videolikes_on_user_id"
   end
 
   create_table "completed_videos", force: :cascade do |t|
@@ -90,7 +90,7 @@ ActiveRecord::Schema.define(version: 2022_09_13_051847) do
   end
 
   create_table "content_videos", force: :cascade do |t|
-    t.integer "number", null: false
+    t.string "number", null: false
     t.string "title", null: false
     t.text "description"
     t.datetime "created_at", null: false
@@ -104,16 +104,7 @@ ActiveRecord::Schema.define(version: 2022_09_13_051847) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "users", force: :cascade do |t|
-    t.string "name", null: false
-    t.string "email", null: false
-    t.string "avatar"
-    t.integer "role", default: 0
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
-  create_table "users_videos", force: :cascade do |t|
+  create_table "user_videos", force: :cascade do |t|
     t.integer "user_id"
     t.integer "content_video_id"
     t.string "number", null: false
@@ -121,8 +112,17 @@ ActiveRecord::Schema.define(version: 2022_09_13_051847) do
     t.string "video_url", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["content_video_id"], name: "index_users_videos_on_content_video_id"
-    t.index ["user_id"], name: "index_users_videos_on_user_id"
+    t.index ["content_video_id"], name: "index_user_videos_on_content_video_id"
+    t.index ["user_id"], name: "index_user_videos_on_user_id"
+  end
+
+  create_table "users", force: :cascade do |t|
+    t.string "name", null: false
+    t.string "email", null: false
+    t.string "avatar"
+    t.integer "role", default: 0
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
 end

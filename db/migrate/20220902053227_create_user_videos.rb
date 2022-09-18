@@ -1,6 +1,6 @@
 class CreateUserVideos < ActiveRecord::Migration[5.2]
   def change
-    create_table :users_videos do |t|
+    create_table :user_videos do |t|
       t.references :user, foreign_key: true
       t.references :content_video, foreign_key: true
       t.string :number, null: false

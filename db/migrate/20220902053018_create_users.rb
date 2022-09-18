@@ -6,7 +6,7 @@ class CreateUsers < ActiveRecord::Migration[5.2]
       t.string :avatar
       t.integer :role, default: 0
       t.datetime :created_at
-      t.datetime :updated_at     
+      t.datetime :updated_at
 
       t.timestamps
     end

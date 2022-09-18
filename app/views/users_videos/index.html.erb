@@ -11,11 +11,11 @@
   </thead>
 
   <tbody>
-    <% @users_videos.each do |users_video| %>
+    <% @user_videos.each do |user_video| %>
       <tr>
-        <td><%= link_to 'Show', users_video %></td>
-        <td><%= link_to 'Edit', edit_users_video_path(users_video) %></td>
-        <td><%= link_to 'Destroy', users_video, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= link_to 'Show', user_video %></td>
+        <td><%= link_to 'Edit', edit_user_video_path(user_video) %></td>
+        <td><%= link_to 'Destroy', user_video, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
     <% end %>
   </tbody>
@@ -23,4 +23,4 @@
 
 <br>
 
-<%= link_to 'New UsersVideo', new_users_video_path %>
+<%= link_to 'New UsersVideo', new_user_video_path %>
