@@ -1,18 +1,18 @@
 Rails.application.routes.draw do
 
   namespace :admin, format: 'json' do
-    resources :content_videos do
-      resources :tags
-      resources :content_video_likes, only: [:create, :destroy]
-      resources :content_video_loves, only: [:create, :destroy]
-      resources :content_video_comments, only: [:create, :edit, :update, :destroy]
-    end
+    resources :tags
   end
 
   namespace :api, format: 'json' do
     namespace :v1 do
-      namespace :user do
-        resources :user_videos, only: [:create, :destroy]
+      resources :user, shallow: true do
+        resources :content_videos do
+          resources :content_video_likes, only: [:create, :destroy]
+          resources :content_video_loves, only: [:create, :destroy]
+          resources :content_video_comments, only: [:create, :edit, :update, :destroy]
+        end
+        resources :user_videos, only: [:new, :create, :destroy]
         resources :completed_video_likes, only: [:create, :destroy]
         resources :completed_video_loves, only: [:create, :destroy]
         resources :completed_video_comments, only: [:create, :edit, :update, :destroy]
