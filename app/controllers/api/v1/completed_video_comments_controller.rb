@@ -1,4 +1,4 @@
-class Admin::CompletedVideos::CompletedVideoCommentsController < ApplicationController
+class Api::V1::CompletedVideos::CompletedVideoCommentsController < ApplicationController
   before_action :set_completed_video_comment, only: %i[ show edit update destroy ]
 
   # GET /comments or /comments.json

@@ -1,4 +1,4 @@
-class Admin::ContentVideos::ContentVideoCommentsController < ApplicationController
+class Api::V1::ContentVideos::ContentVideoCommentsController < ApplicationController
   before_action :set_content_video_comment, only: %i[ show edit update destroy ]
 
   # GET /comments or /comments.json

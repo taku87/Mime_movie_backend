@@ -11,7 +11,7 @@ class User < ApplicationRecord
 
   enum role: { general: 0, admin: 1 }
 
-  validates :name, :presence: true
+  validates :name, presence: true
   validates :role, presence: true
 
   def like_content_video(content_video)

@@ -1,4 +1,4 @@
-class Admin::ContentVideosController < ApplicationController
+class Api::V1::ContentVideosController < ApplicationController
   before_action :set_content_video, only: %i[ show edit update destroy ]
 
   # GET /content_videos or /content_videos.json

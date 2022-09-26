@@ -1,4 +1,4 @@
-class Admin::CompletedVideos::CompletedVideoLikesController < ApplicationController
+class Api::V1::CompletedVideos::CompletedVideoLikesController < ApplicationController
 
   # POST /completed_video_likes or /completed_video_likes.json
   def create

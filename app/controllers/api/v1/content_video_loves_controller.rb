@@ -1,4 +1,4 @@
-class Admin::ContentVideos::ContentVideoLovesController < ApplicationController
+class Api::V1::ContentVideos::ContentVideoLovesController < ApplicationController
 
   # POST /content_video_loves or /content_video_loves.json
   def create

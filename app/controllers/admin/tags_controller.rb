@@ -1,4 +1,4 @@
-class Admin::ContentVideos::TagsController < ApplicationController
+class Admin::TagsController < ApplicationController
   before_action :set_tag, only: %i[ show edit update destroy ]
 
   # GET /tags or /tags.json
@@ -53,7 +53,6 @@ class Admin::ContentVideos::TagsController < ApplicationController
     #authorize([:user, tag])
     @tag.destroy!
     head :ok
-    end
   end
 
   private
