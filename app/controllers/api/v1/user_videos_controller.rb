@@ -17,7 +17,8 @@ class Api::V1::UserVideosController < ApplicationController
 
   # GET /user_videos/new
   def new
-    @user_video = UserVideo.new
+    s3_direct_post
+    #@user_video = UserVideo.new
   end
 
   # GET /user_videos/1/edit
@@ -41,7 +42,6 @@ class Api::V1::UserVideosController < ApplicationController
     #@user_video.transcoded_video_url = VideoEditingWorker.user_video_to_mp4(@user_video)
     ActiveRecord::Base.transaction do
       @user_video.save!
-      upload
     end
     head :ok
   end
@@ -79,4 +79,19 @@ class Api::V1::UserVideosController < ApplicationController
     file_path = @user_video.video_url
     client.put_object(bucket: bucket, key: key, body: file_path)
   end
+
+  def s3_direct_post
+    bucket = 'c'
+
+    resource = S3_BUCKET.presigned_post(
+      #key: "#{@content_video.number}_content_#{@user_video.number}" いずれこちらに差し替え
+      key: "100_content_1",
+      success_action_status: '201',
+      acl: 'public-read',
+      content_length_range: 1..(10.megabytes))
+
+    render json: { url: resource.url, fields: resource.fields }
+  end
+
 end
+
