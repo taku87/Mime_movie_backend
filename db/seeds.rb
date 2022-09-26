@@ -10,9 +10,15 @@ User.create(name: "テストユーザー１", email: "test1@example.com")
 User.create(name: "テストユーザー２", email: "test2@example.com")
 User.create(name: "テストユーザー３", email: "test3@example.com")
 
-ContentVideo.create(number: "100", title: "コンテンツ動画１")
-ContentVideo.create(number: "200", title: "コンテンツ動画２")
-ContentVideo.create(number: "300", title: "コンテンツ動画３")
+ContentVideo.create(number: "100",
+                    title: "コンテンツ動画１",
+                    youtube_url: "VzfeQm89UEE")
+ContentVideo.create(number: "200",
+                    title: "コンテンツ動画２",
+                    youtube_url: "b8UXOaeiTgA")
+ContentVideo.create(number: "300",
+                    title: "コンテンツ動画３",
+                    youtube_url: "grbnA9eViB8")
 
 Tag.create(name: "テストタグ１")
 Tag.create(name: "テストタグ２")
