@@ -1,4 +1,4 @@
-class Api::V1::UserVideosController < ApplicationController
+class Api::V1::UserVideosController < SecuredController
   before_action :set_user_video, only: %i[ show edit update destroy ]
 
   # GET /user_videos or /user_videos.json
@@ -11,7 +11,7 @@ class Api::V1::UserVideosController < ApplicationController
   # GET /user_videos/1 or /user_videos/1.json
   def show
       #authorize([:user, UserVideo])
-      user_video = @cuser_video
+      user_video = @user_video
       render json: user_video, status: :ok
   end
 

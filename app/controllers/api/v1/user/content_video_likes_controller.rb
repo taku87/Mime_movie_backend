@@ -1,11 +1,11 @@
-class Api::V1::ContentVideos::ContentVideoLikesController < ApplicationController
+class Api::V1::User::ContentVideoLikesController < SecuredController
 
   # POST /content_video_likes or /content_video_likes.json
   def create
     # authorize([:user, ContentVideoLike]) pundit認証系
     ActiveRecord::Base.transaction do
       content_video = ContentVideo.find(params[:id])
-      current_user.like_content_video(content_video)
+      @current_user.like_content_video(content_video)
     end
     #意味深掘り
     head :ok
@@ -15,7 +15,7 @@ class Api::V1::ContentVideos::ContentVideoLikesController < ApplicationControlle
   def destroy
     ActiveRecord::Base.transaction do
       content_video = ContentVideo.find(params[:id])
-      current_user.unlike_content_video(content_video)
+      @current_user.unlike_content_video(content_video)
     end
     #意味深掘り
     head :ok

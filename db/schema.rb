@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_09_13_051847) do
+ActiveRecord::Schema.define(version: 2022_09_26_065340) do
 
   create_table "completed_video_comments", force: :cascade do |t|
     t.text "body", null: false
@@ -123,12 +123,13 @@ ActiveRecord::Schema.define(version: 2022_09_13_051847) do
   end
 
   create_table "users", force: :cascade do |t|
-    t.string "name", null: false
-    t.string "email", null: false
+    t.string "name"
+    t.string "email"
     t.string "avatar"
     t.integer "role", default: 0
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "sub", null: false
   end
 
 end
