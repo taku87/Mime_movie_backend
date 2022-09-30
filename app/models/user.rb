@@ -11,8 +11,12 @@ class User < ApplicationRecord
 
   enum role: { general: 0, admin: 1 }
 
-  validates :name, presence: true
-  validates :role, presence: true
+
+
+  #Auth0との連携用　token情報を参照し、userが存在する場合はuserを返す、存在しない場合はuserをcreateする。
+  def self.from_token_payload(payload)
+    find_by(sub: payload['sub']) || create!(sub: payload['sub'])
+  end
 
   def like_content_video(content_video)
     liked_content_videos << content_video
