@@ -1,4 +1,4 @@
-class Api::V1::UserVideosController < SecuredController
+class Api::V1::User::UserVideosController < SecuredController
   before_action :set_user_video, only: %i[ show edit update destroy ]
 
   # GET /user_videos or /user_videos.json
@@ -81,8 +81,6 @@ class Api::V1::UserVideosController < SecuredController
   end
 
   def s3_direct_post
-    bucket = 'c'
-
     resource = S3_BUCKET.presigned_post(
       #key: "#{@content_video.number}_content_#{@user_video.number}" いずれこちらに差し替え
       key: "100_content_1",
@@ -90,7 +88,7 @@ class Api::V1::UserVideosController < SecuredController
       acl: 'public-read',
       content_length_range: 1..(10.megabytes))
 
-    render json: { url: resource.url, fields: resource.fields }
+    render json: { url: resource.url, fields: resource.fields },status: :ok
   end
 
 end
