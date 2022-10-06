@@ -49,6 +49,8 @@ gem 'dotenv-rails'
 gem 'rack-cors'
 # 認証認可機能用のAuth0との連携用　
 gem 'jwt'
+# Rubyでjsonを整形してくれるライブラリ Reactで情報を受け取るために導入
+gem 'jsonapi-serializer'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
