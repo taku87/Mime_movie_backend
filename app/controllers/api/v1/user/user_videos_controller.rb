@@ -81,15 +81,10 @@ class Api::V1::User::UserVideosController < SecuredController
   end
 
   def s3_direct_post
-    resource = S3_BUCKET.presigned_post(
-      #key: "#{@content_video.number}_content_#{@user_video.number}" いずれこちらに差し替え
-      key: "100_content_1",
-      success_action_status: '201',
-      acl: 'public-read',
-      content_length_range: 1..(10.megabytes))
-
-    render json: { url: resource.url, fields: resource.fields },status: :ok
+      presigned_url = Signer.presigned_url(:put_object,
+                                            bucket: ENV['S3_BUCKET'],
+                                            key: "100_content_1",)
+    render json: { presigned_url: presigned_url }
   end
 
 end
-
