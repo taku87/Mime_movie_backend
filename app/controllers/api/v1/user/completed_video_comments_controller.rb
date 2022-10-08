@@ -1,4 +1,4 @@
-class Api::V1::CompletedVideos::CompletedVideoCommentsController < SecuredController
+class Api::V1::User::CompletedVideos::CompletedVideoCommentsController < SecuredController
   before_action :set_completed_video_comment, only: %i[ show edit update destroy ]
 
   # GET /comments or /comments.json

@@ -1,4 +1,4 @@
-class Api::V1::CompletedVideos::CompletedVideoLikesController < SecuredController
+class Api::V1::User::CompletedVideos::CompletedVideoLikesController < SecuredController
   # POST /completed_video_likes or /completed_video_likes.json
   def create
     # authorize([:user, CompletedVideoLike]) pundit認証系
