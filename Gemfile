@@ -41,8 +41,7 @@ gem 'carrierwave'
 # 動画加工　
 gem 'streamio-ffmpeg'
 #　AWS 3S操作用ツールとして　（動画をA3Sにアップロードするため）
-gem 'aws-sdk-rails'
-gem 'aws-sdk', '~> 3'
+gem 'aws-sdk-s3'
 # 環境変数の管理
 gem 'dotenv-rails'
 # Reactからのアクセスを許可するために、CORS設定を行うためのもの
