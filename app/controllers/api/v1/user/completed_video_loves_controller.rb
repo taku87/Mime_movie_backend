@@ -1,4 +1,4 @@
-class Api::V1::User::CompletedVideos::CompletedVideoLovesController < SecuredController
+class Api::V1::User::CompletedVideoLovesController < SecuredController
 
   # POST /completed_video_loves or /completed_video_loves.json
   def create
