@@ -7,6 +7,7 @@ Rails.application.routes.draw do
   namespace :api, format: 'json' do
     namespace :v1 do
       namespace :user do
+        resources :user, only: [:create]
         resources :content_videos
 
         resources :content_video_likes, only: [:create, :destroy]
@@ -17,6 +18,7 @@ Rails.application.routes.draw do
         resources :completed_video_likes, only: [:create, :destroy]
         resources :completed_video_loves, only: [:create, :destroy]
         resources :completed_video_comments, only: [:create, :edit, :update, :destroy]
+
       end
     end
   end
