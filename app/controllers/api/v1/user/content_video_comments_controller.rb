@@ -53,7 +53,6 @@ class Api::V1::User::ContentVideoCommentsController < SecuredController
     #authorize([:user, Comment])
     @comment.destroy!
     head :ok
-    end
   end
 
   private
