@@ -7,6 +7,8 @@ ruby '2.6.4'
 gem 'rails', '~> 5.2.8', '>= 5.2.8.1'
 # Use sqlite3 as the database for Active Record
 gem 'sqlite3'
+#本番環境にてmysqlを使用
+gem 'mysql2'
 # Use Puma as the app server
 gem 'puma', '~> 3.11'
 # Use SCSS for stylesheets
