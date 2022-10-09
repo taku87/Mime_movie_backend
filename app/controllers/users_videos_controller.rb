@@ -12,7 +12,7 @@ class UsersVideosController < ApplicationController
 
   # GET /users_videos/new
   def new
-    @users_video = UsersVideo.new
+    s3_direct_post
   end
 
   # GET /users_videos/1/edit
@@ -23,8 +23,7 @@ class UsersVideosController < ApplicationController
   def create
     @users_video = UsersVideo.new(users_video_params)
     #テスト用に手作業でカラム情報を追加。本来は、入力時にパラメータに情報入るように実装予定
-    @users_video.content_number = 100
-    @users_video.user_id = 1
+
 
     #当初、rails上でmp4への変換処理を想定したが、MediaConvertで変換が可能なことがわかったため、削除予定
     #@users_video.transcoded_video_url = VideoEditingWorker.user_video_to_mp4(@users_video)
@@ -33,7 +32,7 @@ class UsersVideosController < ApplicationController
     #@users_video.transcoded_video_url = VideoEditingWorker.user_video_to_mp4(@users_video)
 
 
-    
+
     respond_to do |format|
       if @users_video.save
         upload
@@ -80,24 +79,18 @@ class UsersVideosController < ApplicationController
     params.require(:users_video).permit(:number, :video_url)
   end
 
-  def upload
-    region = 'ap-northeast-1'
-    # バケット名
-    bucket = 'user-videos-s3-01'
-    # バケットに保存するファイル名
-    key = "#{@users_video.content_number}_content_#{@users_video.number}"
-    client = Aws::S3::Client.new(region: region, access_key_id: ENV['AWS_ACCESS_KEY_ID'], secret_access_key: ENV['AWS_SECRET_ACCESS_KEY'] )  
 
-    # バケットにアップロードする動画の場所
-    file_path = @users_video.video_url
-    client.put_object(bucket: bucket, key: key, body: file_path)
+  def s3_direct_post
+    bucket = 'c'
 
-    # バケットに保存する動画の場所
+    resource = S3_BUCKET.presigned_post(
+      #key: "#{@content_video.number}_content_#{@user_video.number}" いずれこちらに差し替え
+      key: "100_content_1",
+      success_action_status: '201',
+      acl: 'public-read',
+      content_length_range: 1..(10.megabytes))
 
-    file_path ="/uploads/users_video/video_url/#{@users_video.video_url.file.file}"
-    #file_path = @users_video.transcoded_video_url
-
-    client.put_object(bucket: bucket, key: key, body: file_path) 
-
+    render json: { url: resource.url, fields: resource.fields }
   end
+
 end
