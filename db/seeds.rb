@@ -7,15 +7,19 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 
 ContentVideo.create(number: "100",
-                    title: "コンテンツ動画１",
-                    youtube_url: "VzfeQm89UEE")
+                    title: "パントマイム編「ROPE」",
+                    description:"パントマイムの定番「ロープ」！",
+                    thumbnail: "tmb-pantomime-rope.jpg")
 ContentVideo.create(number: "200",
-                    title: "コンテンツ動画２",
-                    youtube_url: "b8UXOaeiTgA")
+                    title: "Engineer編「エラー地獄」",
+                    description:"エンジニアには切っては切り離せない存在、その名もエラー。",
+                    thumbnail: "tmb-engineer-error.jpg")
 ContentVideo.create(number: "300",
-                    title: "コンテンツ動画３",
-                    youtube_url: "grbnA9eViB8")
+                    title: "Engineer編「幸せの瞬間」",
+                    description:"あの幸せの瞬間を何度でも味わえます。",
+                    thumbnail: "tmb-engineer-lgtm.jpg")
 
-Tag.create(name: "テストタグ１")
-Tag.create(name: "テストタグ２")
-Tag.create(name: "テストタグ３")
+#Tag.create(name: "テストタグ１")
+#Tag.create(name: "テストタグ２")
+#Tag.create(name: "テストタグ３")
+

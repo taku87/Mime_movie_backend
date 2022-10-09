@@ -93,6 +93,7 @@ ActiveRecord::Schema.define(version: 2022_09_13_051847) do
     t.integer "number", null: false
     t.string "title", null: false
     t.text "description"
+    t.string "thumbnail"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.datetime "published_at"
