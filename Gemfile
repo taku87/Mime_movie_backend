@@ -7,6 +7,8 @@ ruby '2.6.4'
 gem 'rails', '~> 5.2.8', '>= 5.2.8.1'
 # Use sqlite3 as the database for Active Record
 gem 'sqlite3'
+#本番環境にてmysqlを使用
+gem 'mysql2'
 # Use Puma as the app server
 gem 'puma', '~> 3.11'
 # Use SCSS for stylesheets
@@ -41,10 +43,15 @@ gem 'carrierwave'
 # 動画加工　
 gem 'streamio-ffmpeg'
 #　AWS 3S操作用ツールとして　（動画をA3Sにアップロードするため）
-gem 'aws-sdk-rails'
-gem 'aws-sdk', '~> 3'
+gem 'aws-sdk-s3'
 # 環境変数の管理
 gem 'dotenv-rails'
+# Reactからのアクセスを許可するために、CORS設定を行うためのもの
+gem 'rack-cors'
+# 認証認可機能用のAuth0との連携用　
+gem 'jwt'
+# Rubyでjsonを整形してくれるライブラリ Reactで情報を受け取るために導入
+gem 'jsonapi-serializer'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
