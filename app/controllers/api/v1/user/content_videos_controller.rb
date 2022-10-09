@@ -1,6 +1,6 @@
 class Api::V1::User::ContentVideosController < SecuredController
   before_action :set_content_video, only: %i[ show edit update destroy ]
-  skip_before_action :authorize_request, only: []
+  skip_before_action :authorize_request, only: %i[show]
 
 
   # GET /content_videos or /content_videos.json
@@ -16,7 +16,8 @@ class Api::V1::User::ContentVideosController < SecuredController
   def show
     #authorize([:user, ContentVideo])
     content_video = @content_video
-    render json: content_video, status: :ok
+    render_json = ContentVideoSerializer.new(content_video).serializable_hash.to_json
+    render json: render_json, status: :ok
   end
 
   #おそらくnewという概念がいらない！
