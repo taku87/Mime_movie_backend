@@ -53,7 +53,6 @@ class Admin::ContentVideos::TagsController < ApplicationController
     #authorize([:user, tag])
     @tag.destroy!
     head :ok
-    end
   end
 
   private
