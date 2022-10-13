@@ -12,20 +12,19 @@ class Api::V1::User::UserVideosController < SecuredController
   # GET /user_videos/1 or /user_videos/1.json
   def show
       #authorize([:user, UserVideo])
-      user_video = @user_video
-      render json: user_video, status: :ok
+      set_content_video
+      s3_direct_post
   end
 
   # GET /user_videos/new
   def new
-    s3_direct_post
     #@user_video = UserVideo.new
   end
 
   # GET /user_videos/1/edit
   def edit
     #authorize([:user, UserVideo])
-    user_video = @cuser_video
+    user_video = @user_video
     render json: user_video, status: :ok
   end
 
@@ -65,7 +64,7 @@ class Api::V1::User::UserVideosController < SecuredController
   end
 
   def set_content_video
-    @content_video = ContentVideo.find(params[:content_video_id])
+    @content_video = ContentVideo.find(params[:id])
   end
 
   # Only allow a list of trusted parameters through.
@@ -76,7 +75,7 @@ class Api::V1::User::UserVideosController < SecuredController
   def s3_direct_post
       presigned_url = Signer.presigned_url(:put_object,
                                             bucket: ENV['S3_BUCKET'],
-                                            key: "100_content_1",)
+                                            key: "#{@content_video.number}_content_user_#{current_user.id}",)
     render json: { presigned_url: presigned_url }
   end
 
