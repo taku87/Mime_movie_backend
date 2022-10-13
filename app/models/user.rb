@@ -6,6 +6,7 @@ class User < ApplicationRecord
   has_many :completed_video_loves, dependent: :destroy
   has_many :content_video_comments, dependent: :destroy
   has_many :content_video_likes, dependent: :destroy
+  has_many :liked_content_videos, through: :content_video_likes, source: :content_video
   has_many :content_video_loves, dependent: :destroy
 
   enum role: { general: 0, admin: 1 }
