@@ -1,5 +1,5 @@
 class Api::V1::User::UserVideosController < SecuredController
-  before_action :set_user_video, only: %i[ show edit update destroy ]
+  #before_action :set_user_video, only: %i[ show edit update destroy ]
   skip_before_action :authorize_request, only: %i[create]
 
   # GET /user_videos or /user_videos.json
@@ -76,7 +76,7 @@ class Api::V1::User::UserVideosController < SecuredController
       presigned_url = Signer.presigned_url(:put_object,
                                             bucket: ENV['S3_BUCKET'],
                                             key: "#{@content_video.number}_content_user_#{current_user.id}",)
-    render json: { presigned_url: presigned_url }
+    render json: { presigned_url: presigned_url, key: "#{@content_video.number}_content_user_#{current_user.id}" }
   end
 
 end
