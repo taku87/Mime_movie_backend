@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  get "/", to: 'api/v1/guest/content_videos#index'
 
   namespace :admin, format: 'json' do
     resources :tags
