@@ -49,6 +49,11 @@ gem 'rack-cors'
 # 認証認可機能用のAuth0との連携用　
 gem 'jwt'
 # Rubyでjsonを整形してくれるライブラリ Reactで情報を受け取るために導入
+gem 'net-http'
+# httpを叩くためのライブラリ　auth0関連で使用
+gem 'uri'
+#URIの扱いをよくするためのライブラリ auth0関連で使用
+
 gem 'jsonapi-serializer'
 
 group :development, :test do
