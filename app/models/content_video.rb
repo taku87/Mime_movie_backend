@@ -9,4 +9,6 @@ class ContentVideo < ApplicationRecord
   has_many :like_users, through: :content_video_likes, source: :user
   has_many :content_video_loves, dependent: :destroy
 
+  enum state: { draft: 0, published: 1}
+
 end

@@ -1,6 +1,6 @@
 class ContentVideoSerializer
   include JSONAPI::Serializer
-  attributes :id, :number, :title, :description, :thumbnail
+  attributes :id, :number, :title, :description, :thumbnail, :state
 
   def initialize(resource, options = {})
     @@current_user = options[:current_user]
