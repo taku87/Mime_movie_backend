@@ -13,7 +13,7 @@ class Api::V1::User::UserVideosController < SecuredController
   def show
       #authorize([:user, UserVideo])
       set_content_video
-      s3_direct_post
+      render json: { key: "#{@content_video.number}_content_user_#{current_user.id}" }
   end
 
   # GET /user_videos/new
@@ -71,21 +71,5 @@ class Api::V1::User::UserVideosController < SecuredController
   #def user_video_params
   #  params.require(:user_video).permit(:number, :content_number, :video_url)
   #end
-
-  def s3_direct_post
-    client = Aws::S3::Client.new(
-      signature_version: 'v4',
-      credentials: Aws::Credentials.new(ENV['AWS_ACCESS_KEY_ID'], ENV['AWS_SECRET_ACCESS_KEY']),
-      region: 'ap-northeast-1'
-    )
-    signer = Aws::S3::Presigner.new(client: client)
-      presigned_url = signer.presigned_url(:put_object,
-                                            bucket: ENV['S3_BUCKET'],
-                                            key: "#{@content_video.number}_content_user_#{current_user.id}",
-                                            acl: 'public-read',
-                                            secure: true,
-                                            expires_in: 60*60*24*7)
-    render json: { presigned_url: presigned_url, key: "#{@content_video.number}_content_user_#{current_user.id}" }
-  end
 
 end
