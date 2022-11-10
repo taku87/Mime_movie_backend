@@ -5,6 +5,7 @@ class CreateContentVideos < ActiveRecord::Migration[5.2]
       t.string :title, null: false
       t.text :description
       t.string :thumbnail
+      t.string :youtube_url
       t.datetime :created_at
       t.datetime :updated_at
       t.datetime :published_at

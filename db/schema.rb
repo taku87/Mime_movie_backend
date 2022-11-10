@@ -13,6 +13,7 @@
 ActiveRecord::Schema.define(version: 2022_10_31_013428) do
 
   create_table "completed_video_comments", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb3", force: :cascade do |t|
+    t.text "body"
     t.bigint "user_id"
     t.bigint "completed_video_id"
     t.datetime "created_at", null: false
@@ -28,15 +29,6 @@ ActiveRecord::Schema.define(version: 2022_10_31_013428) do
     t.datetime "updated_at", null: false
     t.index ["completed_video_id"], name: "index_completed_video_likes_on_completed_video_id"
     t.index ["user_id"], name: "index_completed_video_likes_on_user_id"
-  end
-
-  create_table "completed_video_loves", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb3", force: :cascade do |t|
-    t.bigint "user_id"
-    t.bigint "completed_video_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["completed_video_id"], name: "index_completed_video_loves_on_completed_video_id"
-    t.index ["user_id"], name: "index_completed_video_loves_on_user_id"
   end
 
   create_table "completed_videos", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb3", force: :cascade do |t|
@@ -70,15 +62,6 @@ ActiveRecord::Schema.define(version: 2022_10_31_013428) do
     t.index ["user_id"], name: "index_content_video_likes_on_user_id"
   end
 
-  create_table "content_video_loves", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb3", force: :cascade do |t|
-    t.bigint "user_id"
-    t.bigint "content_video_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["content_video_id"], name: "index_content_video_loves_on_content_video_id"
-    t.index ["user_id"], name: "index_content_video_loves_on_user_id"
-  end
-
   create_table "content_video_tag_relations", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb3", force: :cascade do |t|
     t.integer "content_video_type", default: 0, null: false
     t.bigint "tag_id"
@@ -94,6 +77,7 @@ ActiveRecord::Schema.define(version: 2022_10_31_013428) do
     t.string "title", null: false
     t.text "description"
     t.string "thumbnail"
+    t.string "youtube_url"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.datetime "published_at"
@@ -132,16 +116,12 @@ ActiveRecord::Schema.define(version: 2022_10_31_013428) do
   add_foreign_key "completed_video_comments", "users"
   add_foreign_key "completed_video_likes", "completed_videos"
   add_foreign_key "completed_video_likes", "users"
-  add_foreign_key "completed_video_loves", "completed_videos"
-  add_foreign_key "completed_video_loves", "users"
   add_foreign_key "completed_videos", "content_videos"
   add_foreign_key "completed_videos", "user_videos"
   add_foreign_key "content_video_comments", "content_videos"
   add_foreign_key "content_video_comments", "users"
   add_foreign_key "content_video_likes", "content_videos"
   add_foreign_key "content_video_likes", "users"
-  add_foreign_key "content_video_loves", "content_videos"
-  add_foreign_key "content_video_loves", "users"
   add_foreign_key "content_video_tag_relations", "content_videos"
   add_foreign_key "content_video_tag_relations", "tags"
   add_foreign_key "user_videos", "content_videos"
