@@ -12,11 +12,13 @@ Rails.application.routes.draw do
       end
       namespace :user do
         resources :user, only: [:create]
-        resources :content_videos
+        resources :content_videos do
+          resources :content_video_comments, only: %i[create], shallow: true
+        end
 
         resources :content_video_likes, only: [:create, :destroy]
         resources :content_video_loves, only: [:create, :destroy]
-        resources :content_video_comments, only: [:create, :edit, :update, :destroy]
+        resources :content_video_comments, only: [:edit, :update, :destroy]
 
         resources :user_videos, only: [:new, :show, :create, :destroy]
         resources :completed_video_likes, only: [:create, :destroy]

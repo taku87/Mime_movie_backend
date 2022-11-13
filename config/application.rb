@@ -17,3 +17,7 @@ module PoiyatsuMovieVo1
     # the framework and any gems in your application.
   end
 end
+
+class Application < Rails::Application
+  config.action_controller.forgery_protection_origin_check = false
+end
