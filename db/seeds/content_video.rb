@@ -17,7 +17,7 @@ ContentVideo.create(number: "200",
                     title: "Engineer編「エラー地獄」",
                     description:"エンジニアには切っては切り離せない存在、その名もエラー。",
                     thumbnail: "tmb-engineer-error.jpg",
-                    youtube_url:"3AhdXPk1ufg",
+                    youtube_url:"59MXBvW2DAU",
                     state: 1
                     )
 ContentVideo.create(number: "300",
