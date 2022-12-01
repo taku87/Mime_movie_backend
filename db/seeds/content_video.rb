@@ -17,15 +17,15 @@ ContentVideo.create(number: "200",
                     title: "Engineer編「エラー地獄」",
                     description:"エンジニアには切っては切り離せない存在、その名もエラー。",
                     thumbnail: "tmb-engineer-error.jpg",
-                    youtube_url:"",
-                    state: 0
+                    youtube_url:"3AhdXPk1ufg",
+                    state: 1
                     )
 ContentVideo.create(number: "300",
                     title: "Engineer編「幸せの瞬間」",
                     description:"あの幸せの瞬間を何度でも味わえます。",
                     thumbnail: "tmb-engineer-lgtm.jpg",
-                    youtube_url:"",
-                    state: 0
+                    youtube_url:"pGNDCM5H9gQ",
+                    state: 1
                     )
 
 #Tag.create(name: "テストタグ１")
