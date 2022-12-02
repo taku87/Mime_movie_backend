@@ -1,5 +1,6 @@
 class Api::V1::User::ContentVideosController < SecuredController
   before_action :set_content_video, only: %i[ show update destroy ]
+  before_action :authorize_request, except: [:show]
 
   # GET /content_videos or /content_videos.json
   def index
