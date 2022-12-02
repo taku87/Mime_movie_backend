@@ -7,7 +7,7 @@ class ContentVideoSerializer
     super(resource)
   end
 
-  attribute :comment do |content_video|
+  attribute :comments do |content_video|
     content_video.content_video_comments.includes(:user).order(created_at: :desc)
   end
 

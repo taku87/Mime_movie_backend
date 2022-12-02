@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
   root 'api/v1/guest/content_videos#index', format: 'json'
+  get 'secured', to: 'secured#token', format: 'json'
 
   namespace :admin, format: 'json' do
     resources :tags

@@ -1,12 +1,12 @@
+#今後開発予定の機能
+
 class Api::V1::User::CompletedVideoLikesController < SecuredController
   # POST /completed_video_likes or /completed_video_likes.json
   def create
-    # authorize([:user, CompletedVideoLike]) pundit認証系
     ActiveRecord::Base.transaction do
       completed_video = CompletedVideo.find(params[:completed_video_id])
       current_user.like_completed_video(completed_video)
     end
-    #意味深掘り
     head :ok
   end
 
@@ -16,7 +16,6 @@ class Api::V1::User::CompletedVideoLikesController < SecuredController
       completed_video = CompletedVideo.find(params[:completed_video_id])
       current_user.unlike_completed_video(completed_video)
     end
-    #意味深掘り
     head :ok
   end
 end

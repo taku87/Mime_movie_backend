@@ -1,6 +1,5 @@
 class Api::V1::User::ContentVideoCommentsController < SecuredController
   before_action :set_content_video_comment, only: %i[ show edit update destroy ]
-  after_action :set_csrf_token_header,  only: %i[ create ]
 
   # GET /comments or /comments.json
   def index
@@ -33,7 +32,7 @@ class Api::V1::User::ContentVideoCommentsController < SecuredController
   def create
     #authorize([:user, Comment])
     set_content_video
-    comment = current_user.comments.build(content_video_comment_params.merge(content_id: content_video.id))
+    comment = current_user.content_video_comments.build(content_video_comment_params)
     ActiveRecord::Base.transaction do
       comment.save!
     end
@@ -57,7 +56,7 @@ class Api::V1::User::ContentVideoCommentsController < SecuredController
   private
 
     def set_content_video
-      content_video = ContentVideo.find(params[:id])
+      content_video = ContentVideo.find(params[:content_video_id])
     end
 
     # Use callbacks to share common setup or constraints between actions.
@@ -67,6 +66,8 @@ class Api::V1::User::ContentVideoCommentsController < SecuredController
 
     # Only allow a list of trusted parameters through.
     def content_video_comment_params
-      params.require(:comment).permit(:body)
+      params.permit(:body, :content_video_id)
     end
 end
+
+#require(:content_video_comment)
