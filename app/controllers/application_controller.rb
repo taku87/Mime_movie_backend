@@ -6,7 +6,7 @@ class ApplicationController < ActionController::Base
 
   def set_csrf_token
     cookies['CSRF-TOKEN'] = {
-      #domain: 'mime-movie.com', # 親ドメイン
+      domain: 'mime-movie.com', # 親ドメイン
       value: form_authenticity_token
     }
   end
