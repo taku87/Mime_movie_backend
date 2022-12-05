@@ -24,7 +24,7 @@ ContentVideo.create(number: "300",
                     title: "Engineer編「幸せの瞬間」",
                     description:"あの幸せの瞬間を何度でも味わえます。",
                     thumbnail: "tmb-engineer-lgtm.jpg",
-                    youtube_url:"pGNDCM5H9gQ",
+                    youtube_url:"UUpCBuRj-fA",
                     state: 1
                     )
 
