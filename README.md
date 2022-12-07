@@ -1,8 +1,8 @@
 こちらは「MIME MOVIE」のバックエンドのリポジトリになります。
 
-フロントエンドのリポジトリは[こちら] (https://github.com/taku87/Mime_movie_frontend)
+フロントエンドのリポジトリは[こちら](https://github.com/taku87/Mime_movie_frontend)
 
-サービスへのリンク: [MIMEMOVIE] (https://mime-movie.com/)
+サービスへのリンク: [MIMEMOVIE](https://mime-movie.com/)
 
 # MIME MOVIE（マイムムービー）
 
@@ -73,12 +73,31 @@ youtube チャンネル「アニメ OP っポイヤツ」の視聴者コメン�
 
 ### 「MIME MOVIE」のイメージ紹介映像 ↓
 
-<iframe width="560" height="315" src="https://www.youtube.com/embed/atmxb5zbk1Q" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+[![]('サムネイル画像のURL')]('https://youtu.be/atmxb5zbk1Q')
 
-###
+### :tophat:コンテンツ一覧から、興味を持ったものを選びます
 
-<img src="https://mimemovie-public-assets.s3.ap-northeast-1.amazonaws.com/gif-tutorial-1.gif">
-<img src="https://mimemovie-public-assets.s3.ap-northeast-1.amazonaws.com/mrmime-thinking.png">
+<img src="https://mimemovie-public-assets.s3.ap-northeast-1.amazonaws.com/tutorial1.png">  
+  
+<br>
+
+### :movie_camera: 撮影のポイントとサンプル映像を参考に、撮影にチャレンジします
+
+<img src="https://mimemovie-public-assets.s3.ap-northeast-1.amazonaws.com/tutorial2.png">  
+  
+<br>
+
+### :clapper:撮影したら動画をアップロードして、Create ボタンをクリックして動画を作成します
+
+<img src="https://mimemovie-public-assets.s3.ap-northeast-1.amazonaws.com/tutorial3.png">  
+  
+<br>
+
+### :tada:完成した、自分だけのオリジナル映像を視聴できます。
+
+<img src="https://mimemovie-public-assets.s3.ap-northeast-1.amazonaws.com/tutorial4.png">
+  
+<br>
 
 ## ■ 実装済の機能
 
@@ -88,20 +107,25 @@ youtube チャンネル「アニメ OP っポイヤツ」の視聴者コメン�
 
 メイン機能
 
-- ユーザーがアップロードした動画と事前に用意した動画との結合処理をする機能
+- ユーザーがアップロードした動画と事前に用意した動画との結合処理をする機能  
+  ※この機能については、 Qiita 記事で詳しく説明しています ↓  
+  [動画の結合処理を実装したくて試行錯誤の末に、MediaConvert で頑張った話。](https://qiita.com/hanatomura/items/2ced9a4a264755edfbbc)
+
 - 自分が作った動画をダウンロードできる機能
 - 完成版動画（私が全て演じているバージョン）を視聴できる機能
 - SNS 共有機能（Twitter/LINE)
-- ユーザーが誰かが公開した動画にいいね！を押せる。
+- 動画への「いいね！」機能
 
 ## ■ 実装予定の機能
 
-- ユーザーが誰かが公開した動画にコメントできる。
+- 動画へのコメント機能
 - ユーザーが完成動画をアプリ内に公開できる。
 
 ## ■ なぜこのサービスを作りたいのか？
 
 ### 「誰でも主人公になれる世界に！」
+
+<br>
 
 私は幼少期の頃、ご近所の仲良しグループに入っていましたが、そこでは一番年下だったのでなかなか話の輪に入れず、一人遊びをすることが多かったです。
 でも、たまたま学芸会でメイン役を演じる機会が訪れ、観客の打てば響くような歓声を聞いて「人から反響をもらえることって、こんなにも嬉しいんだ！」という驚きに出会いました。
@@ -114,9 +138,46 @@ youtube チャンネル「アニメ OP っポイヤツ」の視聴者コメン�
 今エンタメは、面白いコンテンツが溢れすぎたせいか、「いつだって受け取るもの」か「暇つぶしのためのもの」になっている気がします。
 でも、本当に楽しいのは「自分自身の手で作っている時」のワクワクと「どんな反応が返ってくるだろう？」のソワソワだと私は思っています。あの感情を誰でも体験できるようなアプリを作りたくて、チャレンジしました！
 
-＊＊＊＊＊＊＊＊＊＊＊＊
+＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊
 
-### ■ 　使用技術
+## ■ 使用技術
+
+🔽 認証
+
+- Auth0
+
+🔽 バックエンド
+
+- Ruby(2.7.4)
+- Ruby on Rails(6.1.5)\*API モード
+
+🔽Gem
+
+- JWT
+- Jsonapi-Serializer
+- rack-cors
+
+🔽 フロントエンド
+
+- Javascript
+- React(18.0.0)
+- React Query
+- React Router
+- ReactHookForm
+- Axios
+- aws-sdk
+- react-spring
+- swiper
+- MUI
+- ModuleCSS
+
+🔽 インフラ
+
+- Nginx
+- Puma
+- AWS  
+  (Elemental MediaConvert, AWS Lambda, RDS, ALB, ACM, Route53, CloudFront, S3)
+- Mysql
 
 ### ■ 　インフラ構成図
 
