@@ -74,28 +74,29 @@ youtube チャンネル「アニメ OP っポイヤツ」の視聴者コメン�
 ### 「MIME MOVIE」のイメージ紹介映像 ↓
 
 [![](https://user-images.githubusercontent.com/100251756/206129258-35f5b2c7-4800-40f9-bbe1-56b3cd8de40a.png)](https://youtu.be/atmxb5zbk1Q)
+<br>
 
 ### :tophat:コンテンツ一覧から、興味を持ったものを選びます
 
-<img src="https://mimemovie-public-assets.s3.ap-northeast-1.amazonaws.com/tutorial1.png">  
-  
+  ![　　](https://user-images.githubusercontent.com/100251756/206132414-7814a7d2-68df-4773-9a4e-2fcb90b21465.png)
+  　　
 <br>
 
 ### :movie_camera: 撮影のポイントとサンプル映像を参考に、撮影にチャレンジします
-
-<img src="https://mimemovie-public-assets.s3.ap-northeast-1.amazonaws.com/tutorial2.png">  
+ 
+  ![　　](https://user-images.githubusercontent.com/100251756/206132640-36da69fe-7604-4e60-bdce-b4743ba30665.png)
   
 <br>
 
 ### :clapper:撮影したら動画をアップロードして、Create ボタンをクリックして動画を作成します
 
-<img src="https://mimemovie-public-assets.s3.ap-northeast-1.amazonaws.com/tutorial3.png">  
+ ![tutorial3](https://user-images.githubusercontent.com/100251756/206132761-35fa14f3-c03d-4e2f-8568-cff03ceefc9d.png)
   
 <br>
 
 ### :tada:完成した、自分だけのオリジナル映像を視聴できます。
 
-<img src="https://mimemovie-public-assets.s3.ap-northeast-1.amazonaws.com/tutorial4.png">
+![tutorial4](https://user-images.githubusercontent.com/100251756/206132828-e8eb90f6-58f1-4450-bc15-8ac67c7b0438.png)
   
 <br>
 
@@ -110,6 +111,9 @@ youtube チャンネル「アニメ OP っポイヤツ」の視聴者コメン�
 - ユーザーがアップロードした動画と事前に用意した動画との結合処理をする機能  
   ※この機能については、 Qiita 記事で詳しく説明しています ↓  
   [動画の結合処理を実装したくて試行錯誤の末に、MediaConvert で頑張った話。](https://qiita.com/hanatomura/items/2ced9a4a264755edfbbc)
+![ユーザーフロー](https://user-images.githubusercontent.com/100251756/206135672-ca7d542d-ab52-4fff-bf03-b9123aa49821.png)
+
+
 
 - 自分が作った動画をダウンロードできる機能
 - 完成版動画（私が全て演じているバージョン）を視聴できる機能
@@ -148,8 +152,8 @@ youtube チャンネル「アニメ OP っポイヤツ」の視聴者コメン�
 
 🔽 バックエンド
 
-- Ruby(2.7.4)
-- Ruby on Rails(6.1.5)\*API モード
+- Ruby(2.6.4)
+- Ruby on Rails(5.2.8)
 
 🔽Gem
 
@@ -160,7 +164,7 @@ youtube チャンネル「アニメ OP っポイヤツ」の視聴者コメン�
 🔽 フロントエンド
 
 - Javascript
-- React(18.0.0)
+- React(18.2.0)
 - React Query
 - React Router
 - ReactHookForm
@@ -182,10 +186,5 @@ youtube チャンネル「アニメ OP っポイヤツ」の視聴者コメン�
 ### ■ 　インフラ構成図
 ![インフラ構成図](https://user-images.githubusercontent.com/100251756/206129933-39d62948-ceb4-4962-bd91-6ec4633b31bb.png)
 
-### ■ カスタマージャーニーマップ
-
-https://drive.google.com/file/d/13YanZuPz5uEuE9G2pO8uEw_LQnUP_gEY/view?usp=sharing
-
 ### ■ER 図
-
 https://drive.google.com/file/d/1mzTLzn1F49SFcauD-0nVoSQoAi0TYeQK/view?usp=sharing
