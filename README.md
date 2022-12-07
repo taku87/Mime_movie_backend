@@ -71,9 +71,14 @@ youtube チャンネル「アニメ OP っポイヤツ」の視聴者コメン�
 
 ## ■ サービス詳細
 
-パントマイム紹介映像 ↓
+### 「MIME MOVIE」のイメージ紹介映像 ↓
 
 <iframe width="560" height="315" src="https://www.youtube.com/embed/atmxb5zbk1Q" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
+###
+
+<img src="https://mimemovie-public-assets.s3.ap-northeast-1.amazonaws.com/gif-tutorial-1.gif">
+<img src="https://mimemovie-public-assets.s3.ap-northeast-1.amazonaws.com/mrmime-thinking.png">
 
 ## ■ 実装済の機能
 
