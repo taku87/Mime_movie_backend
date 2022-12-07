@@ -4,17 +4,17 @@
 
 サービスへのリンク: [MIMEMOVIE](https://mime-movie.com/)
 
-# MIME MOVIE（マイムムービー）
+# :tophat:MIME MOVIE（マイムムービー）:movie_camera:
 
 ## ■ サービス概要
 
-エンタメの作り手になりたいという潜在的欲求を持っている人に  
-自分も演じ手として参加した動画を作れる  
-エンタメ動画の作成アプリです
+エンタメの作り手になりたいという潜在的欲求を持っている人に、   
+自らが演じ手として参加した動画を作れる、   
+エンタメ動画の作成アプリです  
 
 ## ■ メインのターゲットユーザー
 
-youtube チャンネル「アニメ OP っポイヤツ」の視聴者  
+youtubeチャンネル「アニメOPっポイヤツ」の視聴者  
 アニメ、漫画が好きな人  
 お芝居（観る、演じる）や、ちょっと変わったエンタメが好きな人  
 <br>
@@ -73,7 +73,7 @@ youtube チャンネル「アニメ OP っポイヤツ」の視聴者コメン�
 
 ### 「MIME MOVIE」のイメージ紹介映像 ↓
 
-[![]('サムネイル画像のURL')]('https://youtu.be/atmxb5zbk1Q')
+[![](https://user-images.githubusercontent.com/100251756/206129258-35f5b2c7-4800-40f9-bbe1-56b3cd8de40a.png)](https://youtu.be/atmxb5zbk1Q)
 
 ### :tophat:コンテンツ一覧から、興味を持ったものを選びます
 
@@ -180,6 +180,7 @@ youtube チャンネル「アニメ OP っポイヤツ」の視聴者コメン�
 - Mysql
 
 ### ■ 　インフラ構成図
+![インフラ構成図](https://user-images.githubusercontent.com/100251756/206129933-39d62948-ceb4-4962-bd91-6ec4633b31bb.png)
 
 ### ■ カスタマージャーニーマップ
 
