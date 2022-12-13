@@ -1,6 +1,7 @@
 class ApplicationController < ActionController::Base
   include ActionController::Cookies
   include ActionController::RequestForgeryProtection
+  include Pundit
 
   protect_from_forgery with: :exception
 
