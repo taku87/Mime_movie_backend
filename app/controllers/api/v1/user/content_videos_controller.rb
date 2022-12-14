@@ -20,7 +20,8 @@ class Api::V1::User::ContentVideosController < SecuredController
   #管理画面開発時用のメソッド
   # POST /content_videos or /content_videos.json
   def create
-    content_video = ContentVideo.new(content_video_params)
+    @content_video = ContentVideo.new(content_video_params)
+    authorize @content_video
     ActiveRecord::Base.transaction do
       content_video.save!
     end
@@ -30,6 +31,8 @@ class Api::V1::User::ContentVideosController < SecuredController
   #管理画面開発時用のメソッド
   # PATCH/PUT /content_videos/1 or /content_videos/1.json
   def update
+    set_content_video
+    authorize @content_video
     @content_video.update!(content_video_params)
     head :ok
   end
@@ -37,6 +40,8 @@ class Api::V1::User::ContentVideosController < SecuredController
   #管理画面開発時用のメソッド
   # DELETE /content_videos/1 or /content_videos/1.json
   def destroy
+    set_content_video
+    authorize @content_video
     @content_video.destroy!
     head :ok
   end
