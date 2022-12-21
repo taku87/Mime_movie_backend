@@ -9,11 +9,11 @@ class ContentVideoPolicy < ApplicationPolicy
   end
 
   def index?
-    true
+    user.admin?
   end
 
   def show?
-    true
+    user.admin?
   end
 
   def create?
