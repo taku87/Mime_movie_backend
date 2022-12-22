@@ -10,7 +10,7 @@ class User < ApplicationRecord
 
 
 
-  #Auth0との連携用　token情報を参照し、userが存在する場合はuserを返す、存在しない場合はuserをcreateする。
+  #Auth0との連携用　token情報を参照し、userが存在する場合はuserを返す、存在しない場合は新規userをcreateする。
   def self.from_token_payload(payload)
     find_by(sub: payload['sub']) || create!(sub: payload['sub'])
   end

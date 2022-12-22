@@ -9,11 +9,11 @@ class AuthorizationService
   end
 
   private
-
+  # ヘッダーに付与されてきたaccesstokenを取り出す作業
   def http_token
     @headers['Authorization'].split(' ').last if @headers['Authorization'].present?
   end
-
+  # accesstokenを検証する作業
   def verify_token
     JsonWebToken.verify(http_token)
   end
