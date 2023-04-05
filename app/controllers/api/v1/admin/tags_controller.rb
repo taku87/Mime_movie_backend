@@ -1,6 +1,6 @@
 #今後開発予定の機能
 
-class Admin::TagsController < ApplicationController
+class Api::V1::Admin::TagsController < ApplicationController
   before_action :set_tag, only: %i[ show edit update destroy ]
 
   # GET /tags or /tags.json
